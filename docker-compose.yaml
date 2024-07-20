@@ -1,0 +1,21 @@
+version: '3'
+services:
+  nornir-network-backup:
+    build:
+      context: ./docker
+      dockerfile: Dockerfile
+    image: mwallraf/nornir-network-backup:0.1.2a1
+    container_name: nornir-network-backup
+    command: backup --all
+    volumes: []
+      #- ./docker/inventory:/opt/nornir-network-backup/inventory
+      #- ./docker/config-nnb.yaml:/opt/nornir-network-backup/config-nnb.yaml
+      #- ./output:/opt/nornir-network-backup/output
+      #- ./docker/ntc-templates:/opt/ntc-templates
+    networks: 
+      - nornir_network_backup
+    environment: []
+
+networks:
+  nornir_network_backup:
+    driver: bridge

@@ -1,0 +1,98 @@
+---
+# vendor groups
+cisco: {}
+oneaccess: {}
+ciena: {}
+juniper: {}
+# software groups
+saos6: {}
+oneos5: {}
+oneos6: {}
+ios-xr: {}
+ios-xe: {}
+# hardware groups
+pbxplug_401: {}
+lbb_4g:
+  data:
+    cmd_facts:
+      - show cellular equipment
+      - show cellular network
+pbxplug_103: {}
+lbb_156: {}
+lbb_400: {}
+lbb_320: {}
+lbb_157:
+  data:
+    cmd_facts:
+      - show cellular equipment
+      - show cellular network
+lbb_154:
+  data:
+    cmd_facts:
+      - show cellular equipment
+      - show cellular network
+lbb_4g+:
+  data:
+    cmd_facts:
+      - show cellular equipment
+      - show cellular network
+pbxplug_212: {}
+lbb_150: {}
+lbb_140: {}
+# characteristic groups
+pbxplug:
+  data:
+    cmd_facts:
+      - show voice voice-port all
+      - show isdn active
+      - show voice voice-port pri all
+      - show voice voice-port pri all reset
+# netmiko platform groups
+oneaccess_oneos:
+  data:
+    cmd_facts:
+      - show system status
+      - show system hardware
+      - hostname
+      - show product-info-area
+      - show ip interface brief
+      - show reboot counters
+      - show ip vrf brief
+      - show transceiver equipment
+      - show ip bgp summary
+      - show policy-interface output
+      - show interfaces
+      - show track all
+      - show vrrp interface
+cisco_ios:
+  data:
+    cmd_facts:
+      - show version
+      - show ip interface brief
+      - show vrf
+      - show ip bgp all summary
+      - show cellular 0 hardware
+      - show cellular 0 network
+      - show inventory raw
+      - show policy-map interface output
+      - show interfaces
+cisco_xr:
+  data:
+    cmd_facts:
+      - show version
+      - show interface brief
+      #- show ipv4 interface
+      - show ipv4 vrf all interface brief
+      #- show bgp neighbors
+      - show vrf all detail
+ciena_saos:
+  data:
+    cmd_running_config: configuration show
+    cmd_facts:
+      - software show
+      - lldp show neighbors
+      - port show status
+      - port show ethernet-config
+      - port show network-config
+      - vlan show
+      - port xcvr show

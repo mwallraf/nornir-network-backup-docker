@@ -1,0 +1,59 @@
+runner:
+  plugin: QueueRunner
+  options:
+    num_workers: 50
+
+inventory:
+  plugin: SimpleInventory
+  options:
+    host_file: "inventory/hosts.yaml"
+    group_file: "inventory/groups.yaml"
+    defaults_file: "inventory/defaults.yaml"
+
+logging:
+  enabled: True
+  log_file: output/logs/network-backups.log
+  level: DEBUG
+  to_console: False
+  loggers:
+    - nornir
+    - nornir_network_backup
+    - netmiko
+    - paramiko
+    - nornir_salt
+
+user_defined:
+  textfsm:
+    enabled: True
+    templates_folder: /opt/ntc-templates/ntc_templates/templates/
+  backup_config:
+    folder: output/backups
+    config_diff_folder: output/backups
+    erase_existing_diff_files: True
+    save_config_diff: True
+    reports:
+      summary:
+        enabled: True
+        filename: output/reports/config-backups-summary.csv
+        append: True
+      details:
+        enabled: True
+        filename: output/reports/config-backups-details.csv
+        append: True
+  facts:
+    enabled: True
+    folder: output/facts
+    summary:
+      - key: hostname
+      - key: serial
+      - key: software
+      - key: boot_version
+      - key: recovery_version
+      - key: reload_reason
+      - key: device
+      - key: mac
+      - key: mgmt_ip
+      - key: vendor
+      - key: hwtype
+      - key: other_ip
+      - key: os_slug
