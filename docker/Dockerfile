@@ -24,6 +24,8 @@ RUN pip install nornir-network-backup==0.1.2a1 && \
     pip install nornir-salt==0.18.0 && \
     pip install requests==2.25.1
 
+RUN pip install --upgrade netmiko
+
 # Copy the current directory contents into the container at /opt/nornir-network-backup
 COPY config-nnb.yaml .
 
